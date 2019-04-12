@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/flexible.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <div class="header">
+            <dl>
+                <dt><i class="iconfont icon-shouye"></i></dt>
+                <dd>电源</dd>
+            </dl>
+            <dl>
+                <dt><i class="iconfont icon-yonghu"></i></dt>
+                <dd>首页</dd>
+            </dl>
+            <dl>
+                <dt><i class="iconfont icon-faxiandingdan"></i></dt>
+                <dd>菜单</dd>
+            </dl>
+            <dl>
+                <dt><i class="iconfont icon-gouwuche"></i></dt>
+                <dd>购物车</dd>
+            </dl>
+            <dl>
+                <dt><i class="iconfont icon-wode"></i></dt>
+                <dd>我的</dd>
+            </dl>
+        </div>
+        <div class="section">
+            <div class="swiper-container" id="section_wrap">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-slide1" style="background:pink;">
+
+                    </div>
+                    <div class="swiper-slide" style="background:skyblue;">2</div>
+                    <div class="swiper-slide" style="background:gold;">3</div>
+                    <div class="swiper-slide" style="background:green;">4</div>
+                    <div class="swiper-slide" style="background:blueviolet;">5</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
+    <script src="js/swiper.min.js"></script>
+    <script>
+        var dls = Array.from(document.querySelectorAll(".header dl"));
+        console.log(dls)
+        var mySwiper = new Swiper("#section_wrap", {
+                on: {
+                    slideChange: function() {
+                        dls.forEach(function(item, i) {
+                            item.classList.remove('active');
+                        })
+                        dls[this.activeIndex].classList.add('active');
+                    }
+                }
+            })
+            //点击footer每个dl完成tab切换
+        dls.forEach(function(item, i) {
+            item.onclick = function() {
+                mySwiper.slideTo(i, 0);
+            }
+        })
+    </script>
+</body>
+
+</html>
